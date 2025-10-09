@@ -1,0 +1,2 @@
+# Specific version of malaria simulation, via a tag
+github::OJWatson/magenta@b6ccb35

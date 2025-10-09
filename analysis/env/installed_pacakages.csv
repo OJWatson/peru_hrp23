@@ -1,0 +1,91 @@
+"","Package","LibPath","Version","Priority","Depends","Imports","LinkingTo","Suggests","Enhances","License","License_is_FOSS","License_restricts_use","OS_type","MD5sum","NeedsCompilation","Built"
+"BH","BH","hipercow/lib/windows/4.5.1/","1.87.0-1",NA,NA,NA,NA,NA,NA,"BSL-1.0",NA,NA,NA,NA,"no","4.5.0"
+"cinterpolate","cinterpolate","hipercow/lib/windows/4.5.1/","1.0.2",NA,NA,NA,NA,"knitr, rmarkdown, testthat",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"cli","cli","hipercow/lib/windows/4.5.1/","3.6.5",NA,"R (>= 3.4)","utils",NA,"callr, covr, crayon, digest, glue (>= 1.6.0), grDevices,
+htmltools, htmlwidgets, knitr, methods, processx, ps (>=
+1.3.4.9000), rlang (>= 1.0.2.9003), rmarkdown, rprojroot,
+rstudioapi, testthat (>= 3.2.0), tibble, whoami, withr",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"crayon","crayon","hipercow/lib/windows/4.5.1/","1.5.3",NA,NA,"grDevices, methods, utils",NA,"mockery, rstudioapi, testthat, withr",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"dde","dde","hipercow/lib/windows/4.5.1/","1.0.7",NA,"R (>= 3.1.0)",NA,"ring (>= 1.0.6)","deSolve, knitr, microbenchmark, rmarkdown, testthat",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"deSolve","deSolve","hipercow/lib/windows/4.5.1/","1.40",NA,"R (>= 3.3.0)","methods, graphics, grDevices, stats",NA,"scatterplot3d, FME",NA,"GPL (>= 2)",NA,NA,NA,NA,"yes","4.5.1"
+"digest","digest","hipercow/lib/windows/4.5.1/","0.6.37",NA,"R (>= 3.3.0)","utils",NA,"tinytest, simplermarkdown",NA,"GPL (>= 2)",NA,NA,NA,NA,"yes","4.5.1"
+"dplyr","dplyr","hipercow/lib/windows/4.5.1/","1.1.4",NA,"R (>= 3.5.0)","cli (>= 3.4.0), generics, glue (>= 1.3.2), lifecycle (>=
+1.0.3), magrittr (>= 1.5), methods, pillar (>= 1.9.0), R6,
+rlang (>= 1.1.0), tibble (>= 3.2.0), tidyselect (>= 1.2.0),
+utils, vctrs (>= 0.6.4)",NA,"bench, broom, callr, covr, DBI, dbplyr (>= 2.2.1), ggplot2,
+knitr, Lahman, lobstr, microbenchmark, nycflights13, purrr,
+rmarkdown, RMySQL, RPostgreSQL, RSQLite, stringi (>= 1.7.6),
+testthat (>= 3.1.5), tidyr (>= 1.3.0), withr",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"farver","farver","hipercow/lib/windows/4.5.1/","2.1.2",NA,NA,NA,NA,"covr, testthat (>= 3.0.0)",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"generics","generics","hipercow/lib/windows/4.5.1/","0.1.4",NA,"R (>= 3.6)","methods",NA,"covr, pkgload, testthat (>= 3.0.0), tibble, withr",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"ggplot2","ggplot2","hipercow/lib/windows/4.5.1/","3.5.2",NA,"R (>= 3.5)","cli, glue, grDevices, grid, gtable (>= 0.1.1), isoband,
+lifecycle (> 1.0.1), MASS, mgcv, rlang (>= 1.1.0), scales (>=
+1.3.0), stats, tibble, vctrs (>= 0.6.0), withr (>= 2.5.0)",NA,"covr, dplyr, ggplot2movies, hexbin, Hmisc, knitr, mapproj,
+maps, multcomp, munsell, nlme, profvis, quantreg, ragg (>=
+1.2.6), RColorBrewer, rmarkdown, rpart, sf (>= 0.7-3), svglite
+(>= 2.1.2), testthat (>= 3.1.2), vdiffr (>= 1.0.6), xml2","sp","MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"glue","glue","hipercow/lib/windows/4.5.1/","1.8.0",NA,"R (>= 3.6)","methods",NA,"crayon, DBI (>= 1.2.0), dplyr, knitr, magrittr, rlang,
+rmarkdown, RSQLite, testthat (>= 3.2.0), vctrs (>= 0.3.0),
+waldo (>= 0.5.3), withr",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"gtable","gtable","hipercow/lib/windows/4.5.1/","0.3.6",NA,"R (>= 4.0)","cli, glue, grid, lifecycle, rlang (>= 1.1.0), stats",NA,"covr, ggplot2, knitr, profvis, rmarkdown, testthat (>= 3.0.0)",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"hms","hms","hipercow/lib/windows/4.5.1/","1.1.3",NA,NA,"lifecycle, methods, pkgconfig, rlang (>= 1.0.2), vctrs (>=
+0.3.8)",NA,"crayon, lubridate, pillar (>= 1.1.0), testthat (>= 3.0.0)",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"isoband","isoband","hipercow/lib/windows/4.5.1/","0.2.7",NA,NA,"grid, utils",NA,"covr, ggplot2, knitr, magick, microbenchmark, rmarkdown, sf,
+testthat, xml2",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"jsonlite","jsonlite","hipercow/lib/windows/4.5.1/","2.0.0",NA,"methods",NA,NA,"httr, vctrs, testthat, knitr, rmarkdown, R.rsp, sf",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"labeling","labeling","hipercow/lib/windows/4.5.1/","0.4.3",NA,NA,"stats, graphics",NA,NA,NA,"MIT + file LICENSE | Unlimited",NA,NA,NA,NA,"no","4.5.0"
+"lifecycle","lifecycle","hipercow/lib/windows/4.5.1/","1.0.4",NA,"R (>= 3.6)","cli (>= 3.4.0), glue, rlang (>= 1.1.0)",NA,"covr, crayon, knitr, lintr, rmarkdown, testthat (>= 3.0.1),
+tibble, tidyverse, tools, vctrs, withr",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"magenta","magenta","hipercow/lib/windows/4.5.1/","1.3.6",NA,"R (>= 2.10)","dde, dplyr, ggplot2, magrittr, odin, progress, Rcpp (>=
+0.12.7), redux, reshape2, rlang, statmod, stringdist, stringi","Rcpp, BH","knitr, rmarkdown, testthat, lattice, RColorBrewer, cowplot",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"magrittr","magrittr","hipercow/lib/windows/4.5.1/","2.0.3",NA,"R (>= 3.4.0)",NA,NA,"covr, knitr, rlang, rmarkdown, testthat",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"odin","odin","hipercow/lib/windows/4.5.1/","1.5.11",NA,NA,"R6, cinterpolate (>= 1.0.0), deSolve, digest, glue, jsonlite,
+ring, withr",NA,"V8, dde (>= 1.0.0), jsonvalidate (>= 1.1.0), knitr, mockery,
+pkgbuild, pkgload, rlang, rmarkdown, testthat",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"pillar","pillar","hipercow/lib/windows/4.5.1/","1.11.0",NA,NA,"cli (>= 2.3.0), glue, lifecycle, rlang (>= 1.0.2), utf8 (>=
+1.1.0), utils, vctrs (>= 0.5.0)",NA,"bit64, DBI, debugme, DiagrammeR, dplyr, formattable, ggplot2,
+knitr, lubridate, nanotime, nycflights13, palmerpenguins,
+rmarkdown, scales, stringi, survival, testthat (>= 3.1.1),
+tibble, units (>= 0.7.2), vdiffr, withr",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"pkgconfig","pkgconfig","hipercow/lib/windows/4.5.1/","2.0.3",NA,NA,"utils",NA,"covr, testthat, disposables (>= 1.0.3)",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"plyr","plyr","hipercow/lib/windows/4.5.1/","1.8.9",NA,"R (>= 3.1.0)","Rcpp (>= 0.11.0)","Rcpp","abind, covr, doParallel, foreach, iterators, itertools,
+tcltk, testthat",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"prettyunits","prettyunits","hipercow/lib/windows/4.5.1/","1.2.0",NA,"R(>= 2.10)",NA,NA,"codetools, covr, testthat",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"progress","progress","hipercow/lib/windows/4.5.1/","1.2.3",NA,"R (>= 3.6)","crayon, hms, prettyunits, R6",NA,"Rcpp, testthat (>= 3.0.0), withr",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"R6","R6","hipercow/lib/windows/4.5.1/","2.6.1",NA,"R (>= 3.6)",NA,NA,"lobstr, testthat (>= 3.0.0)",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"RColorBrewer","RColorBrewer","hipercow/lib/windows/4.5.1/","1.1-3",NA,"R (>= 2.0.0)",NA,NA,NA,NA,"Apache License 2.0",NA,NA,NA,NA,"no","4.5.0"
+"Rcpp","Rcpp","hipercow/lib/windows/4.5.1/","1.1.0",NA,NA,"methods, utils",NA,"tinytest, inline, rbenchmark, pkgKitten (>= 0.1.2)",NA,"GPL (>= 2)",NA,NA,NA,NA,"yes","4.5.1"
+"redux","redux","hipercow/lib/windows/4.5.1/","1.1.4",NA,"R (>= 3.2.0)","R6, storr (>= 1.1.1)",NA,"knitr, rmarkdown, sys, testthat",NA,"GPL-2",NA,NA,NA,NA,"yes","4.5.1"
+"reshape2","reshape2","hipercow/lib/windows/4.5.1/","1.4.4",NA,"R (>= 3.1)","plyr (>= 1.8.1), Rcpp, stringr","Rcpp","covr, lattice, testthat (>= 0.8.0)",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"ring","ring","hipercow/lib/windows/4.5.1/","1.0.6",NA,NA,"R6",NA,"knitr, rmarkdown, testthat",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"rlang","rlang","hipercow/lib/windows/4.5.1/","1.1.6",NA,"R (>= 3.5.0)","utils",NA,"cli (>= 3.1.0), covr, crayon, desc, fs, glue, knitr,
+magrittr, methods, pillar, pkgload, rmarkdown, stats, testthat
+(>= 3.2.0), tibble, usethis, vctrs (>= 0.2.3), withr","winch","MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"scales","scales","hipercow/lib/windows/4.5.1/","1.4.0",NA,"R (>= 4.1)","cli, farver (>= 2.0.3), glue, labeling, lifecycle, R6,
+RColorBrewer, rlang (>= 1.1.0), viridisLite",NA,"bit64, covr, dichromat, ggplot2, hms (>= 0.5.0), stringi,
+testthat (>= 3.0.0)",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"statmod","statmod","hipercow/lib/windows/4.5.1/","1.5.0",NA,"R (>= 3.0.0)","stats, graphics",NA,"MASS, tweedie",NA,"GPL-2 | GPL-3",NA,NA,NA,NA,"yes","4.5.1"
+"storr","storr","hipercow/lib/windows/4.5.1/","1.2.6",NA,"R (>= 3.3.0)","R6 (>= 2.1.0), digest",NA,"DBI (>= 0.6), RSQLite (>= 1.1-2), RPostgres, knitr, mockr,
+parallel, progress, rbenchmark, rmarkdown, testthat (>= 3.0.0)",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"stringdist","stringdist","hipercow/lib/windows/4.5.1/","0.9.15",NA,"R (>= 2.15.3)","parallel",NA,"tinytest",NA,"GPL-3",NA,NA,NA,NA,"yes","4.5.0"
+"stringi","stringi","hipercow/lib/windows/4.5.1/","1.8.7",NA,"R (>= 3.4)","tools, utils, stats",NA,NA,NA,"file LICENSE","yes",NA,NA,NA,"yes","4.5.0"
+"stringr","stringr","hipercow/lib/windows/4.5.1/","1.5.1",NA,"R (>= 3.6)","cli, glue (>= 1.6.1), lifecycle (>= 1.0.3), magrittr, rlang
+(>= 1.0.0), stringi (>= 1.5.3), vctrs (>= 0.4.0)",NA,"covr, dplyr, gt, htmltools, htmlwidgets, knitr, rmarkdown,
+testthat (>= 3.0.0), tibble",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"tibble","tibble","hipercow/lib/windows/4.5.1/","3.3.0",NA,"R (>= 3.4.0)","cli, lifecycle (>= 1.0.0), magrittr, methods, pillar (>=
+1.8.1), pkgconfig, rlang (>= 1.0.2), utils, vctrs (>= 0.5.0)",NA,"bench, bit64, blob, brio, callr, DiagrammeR, dplyr, evaluate,
+formattable, ggplot2, here, hms, htmltools, knitr, lubridate,
+nycflights13, pkgload, purrr, rmarkdown, stringi, testthat (>=
+3.0.2), tidyr, withr",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"tidyselect","tidyselect","hipercow/lib/windows/4.5.1/","1.2.1",NA,"R (>= 3.4)","cli (>= 3.3.0), glue (>= 1.3.0), lifecycle (>= 1.0.3), rlang
+(>= 1.0.4), vctrs (>= 0.5.2), withr",NA,"covr, crayon, dplyr, knitr, magrittr, rmarkdown, stringr,
+testthat (>= 3.1.1), tibble (>= 2.1.3)",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"utf8","utf8","hipercow/lib/windows/4.5.1/","1.2.6",NA,"R (>= 2.10)",NA,NA,"cli, covr, knitr, rlang, rmarkdown, testthat (>= 3.0.0),
+withr",NA,"Apache License (== 2.0) | file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"vctrs","vctrs","hipercow/lib/windows/4.5.1/","0.6.5",NA,"R (>= 3.5.0)","cli (>= 3.4.0), glue, lifecycle (>= 1.0.3), rlang (>= 1.1.0)",NA,"bit64, covr, crayon, dplyr (>= 0.8.5), generics, knitr,
+pillar (>= 1.4.4), pkgdown (>= 2.0.1), rmarkdown, testthat (>=
+3.0.0), tibble (>= 3.1.3), waldo (>= 0.2.0), withr, xml2,
+zeallot",NA,"MIT + file LICENSE",NA,NA,NA,NA,"yes","4.5.1"
+"viridisLite","viridisLite","hipercow/lib/windows/4.5.1/","0.4.2",NA,"R (>= 2.10)",NA,NA,"hexbin (>= 1.27.0), ggplot2 (>= 1.0.1), testthat, covr",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
+"withr","withr","hipercow/lib/windows/4.5.1/","3.0.2",NA,"R (>= 3.6.0)","graphics, grDevices",NA,"callr, DBI, knitr, methods, rlang, rmarkdown (>= 2.12),
+RSQLite, testthat (>= 3.0.0)",NA,"MIT + file LICENSE",NA,NA,NA,NA,"no","4.5.1"
