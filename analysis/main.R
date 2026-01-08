@@ -156,7 +156,7 @@ hipercow::task_status(bundle6$ids)
 # res6 <- lapply(bundle6$ids, hipercow::task_result)
 
 # get the results paths and modify
-for(i in seq_along(bundle6$ids)[137:800]) {
+for(i in seq_along(bundle6$ids)) {
   message(i)
   out <- hipercow::task_result(bundle6$ids[i])
   if(all(out$population_List$Infection_States %in% c(0,5)) ||
@@ -180,20 +180,25 @@ pardf7 <- data.frame("EIR" = 0.101,
                      "itn_years" = 4,
                      "itn_years_2" = 8,
                      "N" = seq(25000, 200000, 25000),
-                     "rep" = sort(rep(1:100, 8)),
+                     "rep" = sort(rep(1:1000, 8)),
                      "saved_state_path" = paths)
 pardf7$seed <- seq_len(nrow(pardf7))
 parl7 <- split(pardf7, pardf7$seed)
 
 # bulk submit continue
-bundle7 <- task_create_bulk_call(run_sim_continue, data = parl7, bundle_name = "N_continue_fin_test_full")
+bundle7 <- task_create_bulk_call(run_sim_continue, data = parl7, bundle_name = "N_continue_fin_test_full_large")
 hipercow::task_status(bundle7$ids) %>% table
 res7 <- lapply(bundle7$ids, hipercow::task_result)
-saveRDS(res7, "analysis/results/sim_N.rds")
+saveRDS(res7, "analysis/results/sim_N_large.rds")
 
 # Get results
 case_df7 <- create_case_df(res7, parl7)
 dfp7 <- create_dfp(case_df7)
+
+# and 500 working seeds:
+seeds7 <-  (dfp7 %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+              na.omit() %>% group_by(N) %>% filter(seed %in% unique(seed)[1:500]) %>% pull(seed) %>% unique)
+
 
 # Do without itn changes
 pardf8 <- data.frame("EIR" = 0.101,
@@ -203,27 +208,58 @@ pardf8 <- data.frame("EIR" = 0.101,
                      "itn_years" = 4,
                      "itn_years_2" = 8,
                      "N" = seq(25000, 200000, 25000),
-                     "rep" = sort(rep(1:100, 8)),
+                     "rep" = sort(rep(1:1000, 8)),
                      "saved_state_path" = paths)
 pardf8$seed <- seq_len(nrow(pardf8))
 parl8 <- split(pardf8, pardf8$seed)
 
-bundle8 <- task_create_bulk_call(run_sim_continue, data = parl8, bundle_name = "N_continue_no_itn_fin_test_full")
+bundle8 <- task_create_bulk_call(run_sim_continue, data = parl8, bundle_name = "N_continue_no_itn_fin_test_full_large")
 hipercow::task_status(bundle8$ids) %>% table
 res8 <- lapply(bundle8$ids, hipercow::task_result)
-saveRDS(res8, "analysis/results/sim_N_no_itn.rds")
+saveRDS(res8, "analysis/results/sim_N_no_itn_large.rds")
 
 # Get results
 case_df8 <- create_case_df(res8, parl8)
 dfp8 <- create_dfp(case_df8)
 
+
+# and 500 working seeds:
+seeds8 <-  (dfp8 %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+              na.omit() %>% group_by(N) %>% filter(seed %in% unique(seed)[1:500]) %>% pull(seed) %>% unique)
+
 ## final plotting ------------------
 
-cases_gg_7 <- cases_plot(dfp7)
-gen_gg_7 <- gen_plot(dfp7)
+# labels for plots
+dfp7$Genotype <- dplyr::recode(
+  dfp7$Genotype,
+  WT      = "hrp2+/hrp3+",
+  hrp2d   = "hrp2-/hrp3+",
+  hrp3d   = "hrp2+/hrp3-",
+  hrp23d  = "hrp2-/hrp3-"
+)
 
-cases_gg_8 <- cases_plot(dfp8)
-gen_gg_8 <- gen_plot(dfp8)
+dfp8$Genotype <- dplyr::recode(
+  dfp8$Genotype,
+  WT      = "hrp2+/hrp3+",
+  hrp2d   = "hrp2-/hrp3+",
+  hrp3d   = "hrp2+/hrp3-",
+  hrp23d  = "hrp2-/hrp3-"
+)
+
+cases_gg_7 <- cases_plot(dfp7 %>% filter(seed %in% seeds7))
+gen_gg_7 <- gen_plot(dfp7 %>% filter(seed %in% seeds7)) +
+  scale_color_manual(values = c("hrp2-/hrp3-" = "#810f7c",
+                                "hrp2-/hrp3+" = "#fa9fb5",
+                                "hrp2+/hrp3-" = "#3690c0",
+                                "hrp2+/hrp3+" = "#CEB175"))
+
+cases_gg_8 <- cases_plot(dfp8 %>% filter(seed %in% seeds7))
+gen_gg_8 <- gen_plot(dfp8 %>% filter(seed %in% seeds7)) +
+  scale_color_manual(values = c("hrp2-/hrp3-" = "#810f7c",
+                                "hrp2-/hrp3+" = "#fa9fb5",
+                                "hrp2+/hrp3-" = "#3690c0",
+                                "hrp2+/hrp3+" = "#CEB175"))
+
 
 # now probability of event
 
@@ -231,27 +267,31 @@ binomial_smooth <- function(...) {
   geom_smooth(method = "glm", method.args = list(family = "binomial"), ...)
 }
 
-dfp_all_7 <- dfp7 %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+dfp_all_7 <- dfp7 %>% filter(seed %in% seeds7) %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+  na.omit() %>%
   group_by(seed, N) %>%
   summarise(m = mean(value[name == "hrp23d"],na.rm=TRUE)>0.75) %>% group_by(N) %>% summarise(p = sum(m)/n(), n = n()) %>%
-  mutate(low = Hmisc::binconf(.data$p*50, 50)[,2]) %>%
-  mutate(high = Hmisc::binconf(.data$p*50, 50)[,3]) %>%
+  mutate(low = Hmisc::binconf(.data$p*500, 500)[,2]) %>%
+  mutate(high = Hmisc::binconf(.data$p*500, 500)[,3]) %>%
   mutate(pamafro = TRUE)
 
-dfp_all_8 <- dfp8 %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+dfp_all_8 <- dfp8 %>% filter(seed %in% seeds8) %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+  na.omit() %>%
   group_by(seed, N) %>%
   summarise(m = mean(value[name == "hrp23d"],na.rm=TRUE)>0.75) %>% group_by(N) %>% summarise(p = sum(m)/n(), n = n()) %>%
-  mutate(low = Hmisc::binconf(.data$p*50, 50)[,2]) %>%
-  mutate(high = Hmisc::binconf(.data$p*50, 50)[,3]) %>%
+  mutate(low = Hmisc::binconf(.data$p*500, 500)[,2]) %>%
+  mutate(high = Hmisc::binconf(.data$p*500, 500)[,3]) %>%
   mutate(pamafro = FALSE)
 
-dfp_ind_7 <- dfp7 %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+dfp_ind_7 <- dfp7 %>% filter(seed %in% seeds7) %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+  na.omit() %>%
   filter(name == "hrp23d") %>%
   group_by(seed, N) %>%
   summarise(p = mean(value[name == "hrp23d"],na.rm=TRUE)>0.75) %>%
   mutate(pamafro = TRUE)
 
-dfp_ind_8 <- dfp8 %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+dfp_ind_8 <- dfp8 %>% filter(seed %in% seeds8) %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+  na.omit() %>%
   filter(name == "hrp23d") %>%
   group_by(seed, N) %>%
   summarise(p = mean(value[name == "hrp23d"],na.rm=TRUE)>0.75) %>%
@@ -268,8 +308,8 @@ prob_gg <- rbind(dfp_all_7, dfp_all_8) %>%
   theme(axis.line = element_line(), axis.title = element_text(size = 12), panel.grid.major = element_line(color = "grey"),
         legend.position = "right") +
   xlab("\nHuman Population Size") +
-  MetBrewer::scale_fill_met_d(palette_name = "Austria", direction = -1, name = "PAMAFRO") +
-  MetBrewer::scale_color_met_d(palette_name = "Austria", direction = -1, name = "PAMAFRO") +
+  scale_fill_manual(values = rev(c("#a40000", "#16317d")),name = "PAMAFRO") +
+  scale_color_manual(values = rev(c("#a40000", "#16317d")),name = "PAMAFRO") +
   ylab("Probability of hrp2-/hrp3- frequency >75% in 2016-2018\n")
 prob_gg
 
@@ -295,6 +335,12 @@ save_figs <- function(name,
 
 }
 
+mod <- glm(p ~ N+pamafro, data = rbind(dfp_ind_7, dfp_ind_8), family = "binomial")
+ exp(cbind(
+       OR = coef(mod),
+       confint(mod)
+   ))
+summary(mod)
 save_figs("supp_traces", cowplot::plot_grid(cases_gg_7, gen_gg_7, rel_widths = c(1,2.5)), width = 6.3*1.55, height = 8*1.25, dpi = 300)
 save_figs("supp_traces_no_pamafro", cowplot::plot_grid(cases_gg_8, gen_gg_8, rel_widths = c(1,2.5)), width = 6.3*1.55, height = 8*1.25, dpi = 300)
 save_figs("main_prob", prob_gg, width = 6.3*1.5, height = 3.5*1.5)
