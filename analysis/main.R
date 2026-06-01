@@ -196,7 +196,7 @@ case_df7 <- create_case_df(res7, parl7)
 dfp7 <- create_dfp(case_df7)
 
 # and 500 working seeds:
-seeds7 <-  (dfp7 %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+seeds7 <-  (dfp7 %>% mutate(t = 2006+t) %>% filter(t >= 2017.8) %>%
               na.omit() %>% group_by(N) %>% filter(seed %in% unique(seed)[1:500]) %>% pull(seed) %>% unique)
 
 
@@ -224,7 +224,7 @@ dfp8 <- create_dfp(case_df8)
 
 
 # and 500 working seeds:
-seeds8 <-  (dfp8 %>% mutate(t = 2006+t) %>% filter(t >= 2016) %>%
+seeds8 <-  (dfp8 %>% mutate(t = 2006+t) %>% filter(t >= 2017.8) %>%
               na.omit() %>% group_by(N) %>% filter(seed %in% unique(seed)[1:500]) %>% pull(seed) %>% unique)
 
 ## final plotting ------------------
@@ -337,6 +337,9 @@ save_figs <- function(name,
 
 # model summaries
 mod <- glm(p ~ N*pamafro, data = rbind(dfp_ind_7, dfp_ind_8), family = "binomial")
+mod2 <- glm(p ~ (N + I(N^2))*pamafro, data = rbind(dfp_ind_7, dfp_ind_8), family = "binomial")
+anova(mod, mod2, test = "LRT")
+
 # helper: odds ratio for PAMAFRO at a given N (plus 95% CI)
 or_at_N <- function(mod, N_value) {
   b <- coef(mod)
